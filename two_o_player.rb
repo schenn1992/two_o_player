@@ -1,6 +1,5 @@
 class Player 
   attr_accessor :name, :score
-
   def initialize(name)
     @name = name
     @score = 3
@@ -9,11 +8,9 @@ class Player
   def remove_score
     @score -= 1
   end 
-
 end
 
 class Question 
-  
   def initialize()
     @firstNum = rand(1...21)
     @secondNum = rand(1...21)
@@ -27,7 +24,6 @@ class Question
     result = @firstNum + @secondNum
     return result
   end
-
 end
 
 class Game 
@@ -57,15 +53,14 @@ class Game
       puts "#{player.name}: Wrong Answer"
       player.remove_score
     end
-
     return answer
   end
 
   def play_game
-    while @playerA.score == 0 and @playerB.score
+    while @playerA.score != 0 and @playerB.score != 0
       player_turn()
-
     end  
+    puts "Godd bye!"
   end
 
   def switch_player
@@ -75,5 +70,4 @@ class Game
       @currentPlayer = @playerA
     end
   end 
-
 end
