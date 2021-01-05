@@ -1,5 +1,5 @@
 class Player 
-  attr_reader :name, :score
+  attr_accessor :name, :score
 
   def initialize(name)
     @name = name
@@ -20,7 +20,12 @@ class Question
   end
 
   def addition_math_question
-    puts "What does #{@firstNum} plus #{@secondNum} equal to?"
+    return "What does #{@firstNum} plus #{@secondNum} equal to?"
+  end
+
+  def addition_result
+    result = @firstNum + @secondNum
+    return result
   end
 
 end
