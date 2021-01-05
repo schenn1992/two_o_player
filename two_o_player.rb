@@ -30,3 +30,50 @@ class Question
 
 end
 
+class Game 
+  def initialize(playerA, playerB)
+    @playerA = playerA
+    @playerB = playerB
+    @currentPlayer = @playerA
+  end
+
+  def player_turn 
+    question = Question.new()
+    puts "#{@currentPlayer.name}: #{question.addition_math_question}"
+    check_answer(@currentPlayer,question)
+    display_score()
+    switch_player()
+  end 
+
+  def display_score
+    puts "#{@playerA.name}: #{@playerA.score}/3 vs #{@playerB.name}: #{@playerB.score}/3 "
+  end 
+
+  def check_answer(player, question)
+    answer = gets.chomp.to_i
+    if answer == question.addition_result
+      puts "#{player.name}: You are correct"
+    else 
+      puts "#{player.name}: Wrong Answer"
+      player.remove_score
+    end
+
+    return answer
+  end
+
+  def play_game
+    while @playerA.score == 0 and @playerB.score
+      player_turn()
+
+    end  
+  end
+
+  def switch_player
+    if @currentPlayer == @playerA
+      @currentPlayer = @playerB
+    else 
+      @currentPlayer = @playerA
+    end
+  end 
+
+end
